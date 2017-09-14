@@ -1,0 +1,69 @@
+<ol class="breadcrumb">
+    <li class="active">Home</a></li>
+</ol>
+
+<br/>
+
+<%- partial ('partials/statusmessage.ejs') %>
+
+<h2>Manage Courses</h2>
+<button class="btn btn-success" id="addCourseButton">Add Course</button>
+<table class="table table-striped table-bordered" id="courseTable" style="width:100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Instructor ID</th>
+      <th>Subject</th>
+      <th>Course</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if(typeof courses != "undefined" && courses.length > 0){ %>
+    <% courses.forEach(function(course){ %>
+      <tr>
+        <td><%= course.course_id %></td>
+        <td><%= course.instructor_id %></td>
+        <td><%= course.subject %></td>
+        <td><%= course.course %></td>
+        <td class="text-center">
+          <button class="btn btn-primary" id="editButton" data-courseid="<%= course.course_id %>">edit</button>
+          <button class="btn btn-danger" id="deleteButton" data-courseid="<%= course.course_id %>">delete</button>
+        </td>
+      </tr>
+    <% }) %>
+  <% } %>
+  </tbody>
+</table>
+
+<div style="display: none;" id="deleteConfirm">Are you sure you want to delete this record?</div>
+
+<form action="/delete_course" method="POST" style="display: none;" id="deleteform">
+  <input type="hidden" name="course_id" value="eric">
+</form>
+
+<form style="display: none;" action="" method="POST" class="form-horizontal" id="manageCourseForm">
+  <input type="hidden" name="course_id">
+
+  <div class="form-group">
+    <label for="first_name" class="col-sm-2 control-label">Instructor ID</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="instructor_id" name="instructor_id" placeholder="e.g. 5" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="last_name" class="col-sm-2 control-label">Subject</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="subject" name="subject"  placeholder="e.g. History" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="start_date" class="col-sm-2 control-label">Course</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="course" name="course" placeholder="e.g. 101" required>
+    </div>
+  </div>
+
+</form>

@@ -61,4 +61,19 @@ module.exports.routes = {
   'POST /update_assignment': 'AssignmentController.update',
   'POST /delete_assignment': 'AssignmentController.delete',
 
+  'POST /create_instructor': 'InstructorController.create',
+  'GET /manage_instructors': 'InstructorController.read',
+  'POST /update_instructor': 'InstructorController.update',
+  'POST /delete_instructor': 'InstructorController.delete',
+
+  'POST /create_major': 'MajorController.create',
+  'GET /manage_majors': 'MajorController.read',
+  'POST /update_major': 'MajorController.update',
+  'POST /delete_major': 'MajorController.delete',
+
+  'POST /create_course': 'CourseController.create',
+  'GET /manage_courses': 'CourseController.read',
+  'POST /update_course': 'CourseController.update',
+  'POST /delete_course': 'CourseController.delete',
+
 };
